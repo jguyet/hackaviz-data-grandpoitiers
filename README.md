@@ -2,6 +2,13 @@
 
 DEFIE 3: Consommations énergétiques de l’ensemble des secteurs d’activité (exprimée en énergie finale et en énergie primaire)
 
+#### DEMO
+
+[Online Dataviz](http://jguyet-data-grandpoitiers.weoohh.com/)
+
+<img src="./img/1.png">
+<img src="./img/2.png">
+
 #### DONNÉES ISSUES DU MODÈLE ÉNERGÉTIQUE
 
 Sur la base des données de l’AREC Nouvelle-Aquitaine (Agence Régionale d’Evaluation environnement et Climat), les productions et consommations d’énergie ont été modélisés sur le territoire de Grand Poitiers par une équipe de prestataires coordonnée par la société Artelys.
