@@ -1,0 +1,75 @@
+<h2>Consommations énergétiques de l’ensemble des secteurs d’activité (exprimée en énergie finale et en énergie primaire)</h2>
+<div style="width:100%;background-color:black;height:2px;"></div>
+<h2>DONNÉES ISSUES DU MODÈLE ÉNERGÉTIQUE</h2>
+<p>Sur la base des données de l’AREC Nouvelle-Aquitaine (Agence Régionale d’Evaluation environnement et Climat), les productions et consommations d’énergie ont été modélisés sur le territoire de Grand Poitiers par une équipe de prestataires coordonnée par la société Artelys.</p>
+<p>Des acteurs publics et privés ont été associés par Grand Poitiers afin de définir un scénario chiffré de transition énergétique du territoire.</p>
+<p>Cette démarche a abouti à une feuille de route ambitieuse à l'horizon 2030, adoptée par le Conseil communautaire de Grand Poitiers :</p>
+<p>- réduire de 25% les consommations d'énergie</p>
+<p>- porter à 38% la part des énergies renouvelables (contre 8% aujourd’hui)</p>
+<p>Les données suivantes sont disponibles en open data :</p>
+<p>- consommations énergétiques de l’ensemble des secteurs d’activité (exprimée en énergie finale et en énergie primaire)</p>
+<p>- émissions de gaz à effet de serre liées à ces consommations d’énergie</p>
+<p>- productions d’énergies renouvelables</p>
+<p>Chaque jeu de donnée est disponible à 2 échelles de temps : situation initiale issue du diagnostic et scénario retenu à l’horizon 2030.</p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+
+<h2>INFORMATIONS PAGE CITY</h2>
+<p>Récuperation des villes présentes dans la données issue de data.grandpoitiers.</p>
+<p>Procédure de transformation des données :</p>
+<p>- Sélection des champs vecteur_energetique distinct.</p>
+<p>- Affichage d'un panel de bouton pour accéder à la dataviz.</p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+
+<h2>INFORMATIONS PAGE DATA</h2>
+<p>A l'aide du nom de la ville une prévision des consommations énérgetiques suivants différentes catégories a été généré.</p>
+<p>Les Catégories sont les suivantes :</p>
+<p>- Chauffage Urbain</p>
+<p>- Electricite</p>
+<p>- ENR Thermiques</p>
+<p>- Fioul</p>
+<p>- Gaz Naturel</p>
+<p>- GPL</p>
+<p>- Produits Petroliers</p>
+<p></p>
+<p>Pour chaques types d'énergies les multiples données ont été assemblé en une seul et unique valeur par catégorie.</p>
+<p>le champs bilan_conso_energie_finale_mwh contient la valeur de la consomation d'un SDE (Schéma Directeur Energie).</p>
+<p>les scenario = 2013 de même type d'énergie et de même zone ont été comptabilisé</p>
+<p>les scenario = 2030 (S2_Volontariste) de même type d'énergie et de meme zone ont été comptabilisé</p>
+<p>Une fois ces valeurs rassemblées, nous avons une valeur de départ pour 2013 et une valeur d'objectif pour 2030.</p>
+<p>Nous pouvons donc prevoir une augmentation ou une diminution de la consommation pour les années entre ces deux valeurs puis les rendre visible.</p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+
+<h2>INFORMATIONS PAGE API</h2>
+<p>Exemple d'un retour de valeurs rassemblé pour une même zone pour toutes les catégories d'énergies de 2013 et 2030 (objectif)</p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+
+<h2>TECHNO UTILISÉ</h2>
+<p>Front-end :</p> 
+<p> - Language: Angular, version 8.3.20</p>
+<p> - Interface Graphique Full Material.</p>
+<p> - Utilisation de programmation fonctionnnel (Reactive) RXJS.</p>
+<p></p>
+<p>Pourquoi Angular ?</p>
+<p> - Angular car j'ai une bonne connaissance de ce framework.</p>
+<p></p>
+<p>Back-end  :</p>
+<p> - Language: Nodejs, version > 11.4</p>
+<p> - Exposition de l'api à l'aide de Swagger UI adapter pour nodejs.</p>
+<p> - Base de données Mysql (transformation de la donnée data.grandpoitiers (json) à l'aide de script codé en php)</p>
+<p></p>
+<p>Pourquoi ? Mais Pourquoi ce faire autant de mal ?</p>
+<p> - J'aurais vraiment voulu apprendre Spark sur ce Hackaviz, le peu de temps que j'avais de disponible ne me permetais pas de perdre du temps sur une techno que je ne connais pas.</p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+<h2>PARTAGE</h2>
+<p>Source du projet disponible sur mon github : <a href="https://github.com/jguyet/hackaviz-data-grandpoitiers">https://github.com/jguyet/hackaviz-data-grandpoitiers</a></p>
+
+<div style="width:100%;background-color:black;height:2px;"></div>
+<h2>CRÉDIT</h2>
+<p>Écrit/Codé par <b>Jérémy Guyet</b> développeur jguyet.weoohh@gmail.com</p>
+<p>Remerciement à la <b>#teamData</b> pour l'organisation de cette évenement.</p>
+

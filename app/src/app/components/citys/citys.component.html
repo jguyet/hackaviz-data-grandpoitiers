@@ -1,0 +1,21 @@
+<p>
+    Liste des villes ou les prédictions entre 2013 et 2030 sont possible.
+</p>
+<div style="width:100%;background-color:black;height:2px;margin-bottom:10px;"></div>
+<div *ngIf="response.status === 'error' && response.message !== undefined" class="text-zone" style="color:red;">
+Error: {{ response.message }}
+</div>
+<div *ngIf="response.status === 'error' && response.error !== undefined && response.error.status === 0" class="text-zone" style="color:red;">
+Server does not respond.
+</div>
+<div *ngIf="response.status === 'progress'">
+        <div role="progressbar" [style.width.%]="response.progress" style="background-color: green;min-height: 6px;margin: 0px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        </div>
+</div>
+<div *ngIf="response.status === 'complete'" style="min-height: 6px;line-height: 6px;background-color:transparent;width: 100%;margin: 0px;"></div>
+<div *ngIf="response.status !== 'progress' && response.status !== 'complete' && response.status !== 'error'" class="progress" style="min-height: 6px;line-height: 6px;background-color:green;width: 100%;margin: 0px;" [style.width.%]="0"></div>
+<div *ngIf="response.status === 'error'" style="min-height: 6px;line-height: 6px;background-color:red;width: 100%;margin: 0px;"></div>
+
+<ul *ngIf="response.status === 'complete'">
+    <li *ngFor="let zone of response.content"> <a mat-flat-button [color]="'accent'" routerLink="/data/{{ zone }}" >{{ zone }}</a></li>
+</ul>

@@ -1,0 +1,48 @@
+<div *ngIf="response.status === 'error' && response.message !== undefined" class="text-zone" style="color:red;">
+Error: {{ response.message }}
+</div>
+<div *ngIf="response.status === 'error' && response.error !== undefined && response.error.status === 0" class="text-zone" style="color:red;">
+Server does not respond.
+</div>
+<div *ngIf="response.status === 'progress'">
+        <div role="progressbar" [style.width.%]="response.progress" style="background-color: green;min-height: 6px;margin: 0px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        </div>
+</div>
+<div *ngIf="response.status === 'complete'" style="min-height: 6px;line-height: 6px;background-color:transparent;width: 100%;margin: 0px;"></div>
+<div *ngIf="response.status !== 'progress' && response.status !== 'complete' && response.status !== 'error'" class="progress" style="min-height: 6px;line-height: 6px;background-color:green;width: 100%;margin: 0px;" [style.width.%]="0"></div>
+<div *ngIf="response.status === 'error'" style="min-height: 6px;line-height: 6px;background-color:red;width: 100%;margin: 0px;"></div>
+<mat-tab-group *ngIf="response.status === 'complete'" #tabYearRef [selectedIndex]="year - 2013" (selectedTabChange)="onTabClick($event)" style="min-height: 2965px;">
+    <mat-tab *ngFor="let i of yearsTab" label="{{ i }}" style="min-height: calc(100vh - 49px);">
+        <h1 style="display: block;text-align: center;" >({{ city }}) les chiffres clés en {{ i }}</h1>
+        <h3 *ngIf="cols == 3" style="display: block;float:right;">*Utilisez les flèches directionnelles de gauche à droite.</h3>
+        <ng-container *ngIf="year == i">
+            <ng-container *ngFor="let item of response.content | keyvalue">
+                    <h2><img src="../../../assets/sde/{{item.key.replace(' ', '-') | uppercase }}.png" width="30" height="30">{{item.key | uppercase }}</h2>
+                <mat-grid-list [cols]="cols" gutterSize="10px" rowHeight="fit" style="height: 400px;" (window:resize)="onResize($event)">
+                    <mat-grid-tile style="display:block;text-align: center;">
+                        <h3 class="objectif">
+                            <div style="font-size: 0.5em;margin-bottom: 5px;">Valeur actuel</div>
+                            {{ format(item.value, i - 2013) }} Mwh / an
+                        </h3>
+                    </mat-grid-tile>
+                    <mat-grid-tile style="display:block;text-align: center;">
+                        <h3 class="objectif">
+                            <div style="font-size: 0.5em;margin-bottom: 5px;">Pourcentage d'augmentation depuis 2013</div>
+                            2013 => <strong>{{ aug(item.value, i - 2013, "start") }}</strong>
+                        </h3>
+                    </mat-grid-tile>
+                    <mat-grid-tile style="display:block;text-align: center;">
+                        <h3 class="objectif">
+                            <div style="font-size: 0.5em;margin-bottom: 5px;">Pourcentage de progression sur objectif 2030</div>
+                            <strong>{{ aug(item.value, i - 2013, "objectif") }}</strong> => 2030
+                        </h3>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </ng-container>
+        </ng-container>
+    </mat-tab>
+</mat-tab-group>
+<h2 *ngIf="response.status === 'complete'">{{ year }}</h2>
+<app-chartviz *ngIf="response.status === 'complete'" [data]="data" type="pie"></app-chartviz>
+<h2 *ngIf="response.status === 'complete'">{{ year }}</h2>
+<app-chartviz *ngIf="response.status === 'complete' && cols == 3" [data]="data" type="column"></app-chartviz>

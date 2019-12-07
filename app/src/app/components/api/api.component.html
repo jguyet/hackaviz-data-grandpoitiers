@@ -1,0 +1,53 @@
+<p>
+    Ce jeu de données peut être utilisé via une API qui autorise la recherche et le téléchargement d'enregistrements par plusieurs critères, exposés ci dessous.
+    <br>Jetez un oeil à la documentation de l'API et utilisez la console d'API complète pour essayer les autres API ! <a [href]="apiEndpoint" target="_blank">Lien du Swagger (Documentation) de l'API</a>
+    <br>Source du jeu de données <a href="https://data.grandpoitiers.fr/explore/dataset/sde_consommation_energie_primaire">data.grandpoitiers.fr/explore/dataset/sde_consommation_energie_primaire</a>
+    <br>Ce jeu de données est sous licence : <a href="https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf">Licence Ouverte (Etalab)</a>
+</p>
+<div style="width:100%;background-color:black;height:2px;margin-bottom:10px;"></div>
+<div style="display: flex;">
+    <table style="float:left;width:50%;">
+        <tr>
+            <td class="left-tab">q</td>
+            <td class="middle-tab">
+                <mat-form-field>
+                    <mat-label>Requête en texte intégral pour le filtrage des données</mat-label>
+                    <input matInput [(ngModel)]="q">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a mat-flat-button color="accent" (click)="onChange();">Envoyer</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div style="width:90%;padding:5px;background: #f5f5f5;border-radius: 3px;border: 1px solid rgba(0,0,0,.15);">
+                    <a style="color:purple;" target="_blank" href="{{ getURI() }}">API: {{ getURI() }}</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div style="float:right;width:50%;padding: 10px;background: #f5f5f5;border-radius: 3px;border: 1px solid rgba(0,0,0,.15);">
+        
+        <div *ngIf="response.status === 'error' && response.message !== undefined" class="text-zone" style="color:red;">
+            Error: {{ response.message }}
+        </div>
+        <div *ngIf="response.status === 'error' && response.error !== undefined && response.error.status === 0" class="text-zone" style="color:red;">
+            Server does not respond.
+        </div>
+        <div *ngIf="response.status === 'progress'">
+            <div role="progressbar" [style.width.%]="response.progress" style="background-color: green;min-height: 6px;margin: 0px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+        <div *ngIf="response.status === 'complete'" style="min-height: 6px;line-height: 6px;background-color:transparent;width: 100%;margin: 0px;"></div>
+        <div *ngIf="response.status !== 'progress' && response.status !== 'complete' && response.status !== 'error'" class="progress" style="min-height: 6px;line-height: 6px;background-color:green;width: 100%;margin: 0px;" [style.width.%]="0"></div>
+        <div *ngIf="response.status === 'error'" style="min-height: 6px;line-height: 6px;background-color:red;width: 100%;margin: 0px;"></div>
+            
+        <div *ngIf="response.status === 'complete'"><ngx-json-viewer [json]="response.content" [expanded]="true" [cleanOnChange]="false"></ngx-json-viewer></div>
+    </div>
+</div>

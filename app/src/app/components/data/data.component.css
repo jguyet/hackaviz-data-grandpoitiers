@@ -1,0 +1,25 @@
+mat-grid-tile {
+    background: #f3f3f3;
+}
+
+h3 {
+    color: #353535;
+}
+
+strong {
+    color: grey;
+}
+
+.objectif {
+    font-size: 2.0em;
+}
+
+.progress {
+    animation: progressBar 2s ease-in-out infinite;
+    animation-fill-mode:both; 
+}
+
+@keyframes progressBar {
+  0% { margin-left: 50%; width: 0; }
+  100% { width: 100%; }
+}

@@ -1,0 +1,49 @@
+<!--<div>
+    <ul>
+        <li> <a mat-flat-button [color]="router.url == '/' ? 'warn' : 'accent'" routerLink="/">Formation</a></li>
+        <li> <a mat-flat-button [color]="router.url == '/cards' ? 'warn' : 'accent'" routerLink="/cards">Cards</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/typography' ? 'warn' : 'accent'" routerLink="typography">Typography</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/button' ? 'warn' : 'accent'" routerLink="button">Button</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/icon' ? 'warn' : 'accent'" routerLink="icon">Icon</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/badge' ? 'warn' : 'accent'" routerLink="badge">Badge</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/spinner' ? 'warn' : 'accent'" routerLink="spinner">Spinner</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/toolbar' ? 'warn' : 'accent'" routerLink="toolbar">Toolbar</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/sidenav' ? 'warn' : 'accent'" routerLink="sidenav">Sidenav</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/menu' ? 'warn' : 'accent'" routerLink="menu">Menu</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/list' ? 'warn' : 'accent'" routerLink="list">List</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/grid' ? 'warn' : 'accent'" routerLink="grid">Grid</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/expansion-panel' ? 'warn' : 'accent'" routerLink="expansion-panel">Expansion Panel</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/tabs' ? 'warn' : 'accent'" routerLink="tabs">Tabs</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/stepper' ? 'warn' : 'accent'" routerLink="stepper">Stepper</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/input' ? 'warn' : 'accent'" routerLink="input">Input</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/select' ? 'warn' : 'accent'" routerLink="select">Select</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/autocomplete' ? 'warn' : 'accent'" routerLink="autocomplete">Autocomplete</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/checkbox' ? 'warn' : 'accent'" routerLink="checkbox">Checkbox</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/datepicker' ? 'warn' : 'accent'" routerLink="datepicker">Datepicker</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/tooltip' ? 'warn' : 'accent'" routerLink="tooltip">Tooltip</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/snackbar' ? 'warn' : 'accent'" routerLink="snackbar">Snackbar</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/dialogue' ? 'warn' : 'accent'" routerLink="dialogue">Dialogue</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/storage' ? 'warn' : 'accent'" routerLink="storage">Storage</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/login' ? 'warn' : 'accent'" routerLink="login">Login</a> </li>
+        <li> <a mat-flat-button [color]="router.url == '/nrj' ? 'warn' : 'accent'" routerLink="nrj">Nrj</a> </li>
+    </ul>
+</div>-->
+<div>
+    <span style="text-align: center;display: block;">
+        <span style="color: #961454; font-family: Barlow,sans-serif; font-size: 3rem">Hackaviz</span>&nbsp;
+        <span style="color: #000005; font-family: Barlow,sans-serif; font-size: 3rem">Grand Poitiers</span>
+    </span>
+    <span style="color: #000005; font-family: Barlow,sans-serif; font-size: 1.0rem;position:absolute;right: 0px;top: 0px;">Auteur: Jérémy Guyet, jguyet.weoohh@gmail.com</span>
+</div>
+<div>
+    <div style="display: flex;background-color: beige;margin: 0px;padding-right: 10px;padding-left: 10px;position:relative;">
+        <h1>Défi 3: SDE (Schéma Directeur des Energies)</h1>
+        <ul>
+            <li> <a mat-flat-button [color]="router.url == '/informations' || router.url == '/' ? 'warn' : 'accent'" routerLink="/">Informations</a></li>
+            <li> <a mat-flat-button [color]="router.url == '/citys' ? 'warn' : 'accent'" routerLink="/citys">Villes</a> </li>
+            <li> <a mat-flat-button [color]="router.url.includes('/data') ? 'warn' : 'accent'" routerLink="/citys">Data</a> </li>
+            <li> <a mat-flat-button [color]="router.url == '/api' ? 'warn' : 'accent'" routerLink="api">Api</a> </li>
+        </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>

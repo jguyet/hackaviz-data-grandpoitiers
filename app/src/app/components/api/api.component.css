@@ -1,0 +1,22 @@
+.left-tab {
+    width: 30%;
+}
+
+.middle-tab {
+    width: 70%;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.progress {
+    background-color: #e4c465;
+    animation: progressBar 2s ease-in-out infinite;
+    animation-fill-mode:both; 
+}
+
+@keyframes progressBar {
+  0% { margin-left: 50%; width: 0; }
+  100% { width: 100%; }
+}

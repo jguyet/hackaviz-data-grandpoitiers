@@ -1,0 +1,21 @@
+a {
+    margin: 0.5rem;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    text-align: left;
+    flex-flow: wrap;
+}
+
+.progress {
+    background-color: #e4c465;
+    animation: progressBar 2s ease-in-out infinite;
+    animation-fill-mode:both; 
+}
+
+@keyframes progressBar {
+  0% { margin-left: 50%; width: 0; }
+  100% { width: 100%; }
+}
