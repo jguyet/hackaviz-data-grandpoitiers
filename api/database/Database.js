@@ -8,7 +8,7 @@ const SDEModel = require("./models/SDE");
  */
 module.exports = function(app) {
 
-    app.use(orm.express("mysql://root:tishirt@localhost/dataviz", {
+    app.use(orm.express("mysql://root:password@localhost/dataviz", {
         define: function (db, models) {
             models.sde = SDEModel(orm, db);
 

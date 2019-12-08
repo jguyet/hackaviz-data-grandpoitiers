@@ -2,12 +2,81 @@
 
 DEFIE 3: Consommations énergétiques de l’ensemble des secteurs d’activité (exprimée en énergie finale et en énergie primaire)
 
-#### DEMO
-
 [Online Dataviz](http://jguyet-data-grandpoitiers.weoohh.com/)
 
 <img src="./img/1.png">
 <img src="./img/2.png">
+
+#### ------------------------------------------------------------
+
+#### INSTALLATION
+
+#### Pres-requis: 
+ 1. installer un serveur Mysql puis créez une base de données nommé `dataviz`
+ 2. installer nodejs en version >= `v11.4.0`
+ 3. installer @angular/cli@latest >= `v8.3.8`
+
+#### (1) Les données
+
+##### Option (1) Avec le dump sql pres formatter:
+Creez une table qui accueillera notre données.
+Puis importer depuis une interface web ou manuellement a l'aide des commandes mysql.
+`mysql -u username -p database_name < dataviz.sql`
+
+##### Option (2) Depuis data.grandpoitiers :
+Allez sur https://data.grandpoitiers.fr/explore/dataset/sde_consommation_energie_primaire
+Puis exporter les données en JSON dans l'onglet export.
+nommer le fichier de données en `sde_consommation_energie_primaire.json` puis placez le a coter du script `sde_json_to_mysql.php`
+Ensuite changez dans le script `sde_json_to_mysql.php` a la ligne `42` à `45` les informations de votre base de données :
+```
+const host = "127.0.0.1";
+const user = "root";
+const pass = "password";
+const name = "dataviz";
+```
+Creez une table nommez `sde_consommation_energie_primaire` avec les champs suivant :
+```
+CREATE TABLE `sde_consommation_energie_primaire` (
+  `recordid` varchar(40) NOT NULL,
+  `bilan_conso_energie_finale_mwh` float DEFAULT NULL,
+  `nvx_equip` text,
+  `scenario` text NOT NULL,
+  `vecteur_energetique` text NOT NULL,
+  `cat_primaire` text NOT NULL,
+  `equip_chauffage` text NOT NULL,
+  `zones` text NOT NULL,
+  `usage_key` text NOT NULL,
+  `cat_secondaire` text NOT NULL,
+  `ss_cat_secondaire` text NOT NULL,
+  `renovation` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+```
+Executez le script php en ligne de commande `php sde_json_to_mysql.php`
+
+#### (2) Le front
+Dans le dossier app executez la commande `npm install`
+
+Changez le endpoint dans la configuration ouvrir les fichier environements : `src/environements/environement.ts`
+`src/environements/environement.dev.ts`
+`src/environements/environement.prod.ts`
+puis changez la ligne : `dataApi: 'http://37.44.236.91:8080'`
+par `http://127.0.0.1:8080` si vous etes en localhost.
+
+Ensuite lancez l'application avec la commande cli `ng serve`
+
+#### (3) Le backend
+
+Dans le dossier api executez la commande `npm install`
+
+Changez les informations de base de données dans le fichier `database/Database.js`
+A la ligne `11` changez `"mysql://root:password@localhost/dataviz"` par vos information mysql.
+
+Ensuite lancez l'api avec la commande `npm start server.js`
+
+#### (4) Pour finir
+Allez maintenant dans votre navigateur favori a l'adresse suivante `http://localhost:4200`
+
+#### ------------------------------------------------------------
 
 #### DONNÉES ISSUES DU MODÈLE ÉNERGÉTIQUE
 
@@ -70,6 +139,8 @@ Back-end :
 - Base de données Mysql (transformation de la donnée data.grandpoitiers (json) à l'aide de script codé en php)
 Pourquoi ? Mais Pourquoi ce faire autant de mal ?
 - J'aurais vraiment voulu apprendre Spark sur ce Hackaviz, le peu de temps que j'avais de disponible ne me permetais pas de perdre du temps sur une techno que je ne connais pas.
+
+#### ------------------------------------------------------------
 
 #### CRÉDIT
 Écrit/Codé par Jérémy Guyet développeur jguyet.weoohh@gmail.com
